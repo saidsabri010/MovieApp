@@ -5,6 +5,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -31,10 +32,11 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
 
     @Override
     public void onBindViewHolder(@NonNull MovieAdapter.ViewHolder holder, int position) {
-        holder.id.setId(movieModelList.get(position).getId());
-        holder.title.setTitle(movieModelList.get(position).getTitle());
+        holder.title.setText(movieModelList.get(position).getTitle());
+        holder.id.setText(movieModelList.get(position).getId());
+        holder.overview.setText(movieModelList.get(position).getOverview());
+        //holder.voteAverage.setText((int) movieModelList.get(position).getVote_average());
         Glide.with(context).load("https://image.tmdb.org/t/p/w500"+movieModelList.get(position).getPoster_path()).into(holder.imageView);
-
     }
 
     @Override
@@ -43,12 +45,18 @@ public class MovieAdapter extends RecyclerView.Adapter<MovieAdapter.ViewHolder> 
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
-        public ImageView imageView;
-        public MovieModel id;
-        public MovieModel title;
+        ImageView imageView;
+        TextView id;
+        TextView title;
+        TextView overview;
+        TextView voteAverage;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
+            title = itemView.findViewById(R.id.title);
             imageView = itemView.findViewById(R.id.image_view_upload);
+            id = itemView.findViewById(R.id.id);
+            overview = itemView.findViewById(R.id.overview);
+            //voteAverage = itemView.findViewById(R.id.voteAverage);
         }
     }
 }

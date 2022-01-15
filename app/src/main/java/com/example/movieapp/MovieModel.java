@@ -1,13 +1,13 @@
 package com.example.movieapp;
 
 public class MovieModel {
-    private int id;
+    private String id;
     private String overview;
     private String poster_path;
     private String title;
     private float vote_average;
 
-    public MovieModel(int id, String overview, String poster_path, String title, float vote_average) {
+    public MovieModel(String id, String overview, String poster_path, String title, float vote_average) {
         this.id = id;
         this.overview = overview;
         this.poster_path = poster_path;
@@ -20,20 +20,18 @@ public class MovieModel {
 
     @Override
     public String toString() {
-        return
-                "id=" + id +
+        return "id='" + id + '\'' +
                 ", overview='" + overview + '\'' +
                 ", poster_path='" + poster_path + '\'' +
                 ", title='" + title + '\'' +
-                ", vote_average=" + vote_average +
                 '}';
     }
 
-    public int getId() {
+    public String getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(String id) {
         this.id = id;
     }
 
